@@ -4,6 +4,7 @@ import com.cursojava.projetospring.entities.User;
 import com.cursojava.projetospring.repositories.UserRepository;
 import com.cursojava.projetospring.services.exceptions.DatabaseException;
 import com.cursojava.projetospring.services.exceptions.ResourceNotFoundException;
+import jakarta.persistence.EntityNotFoundException;
 import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -44,9 +45,14 @@ public class UserService {
   public User update(Long id, User obj) {
     // não consulta o banco, apenas prepara um obj monitorado para que após as alterações o banco de
     // dados seja acessado
-    User entity = repository.getReferenceById(id);
-    updateData(entity, obj);
-    return repository.save(entity);
+    try {
+      User entity = repository.getReferenceById(id);
+      updateData(entity, obj);
+      return repository.save(entity);
+
+    } catch (EntityNotFoundException e) {
+      throw new ResourceNotFoundException(id);
+    }
   }
 
   private void updateData(User entity, User obj) {
