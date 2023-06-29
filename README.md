@@ -15,4 +15,4 @@ git clone https://github.com/andrefcordeiro/projeto-springboot3-java17.git
 - Banco de dados H2
 
 ## Modelo de domínio
-![image](https://github.com/andrefcordeiro/projeto-springboot3-java17/assets/56007053/9b6ede8a-dd48-4cd3-8c71-5e50fab82257)
+![image](https://github.com/andrefcordeiro/projeto-springboot3-java17/assets/56007053/f1e80f29-91a7-46dd-9c83-9169fdd50ca0)
